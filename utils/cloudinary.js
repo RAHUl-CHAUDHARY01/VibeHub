@@ -11,6 +11,7 @@ import fs from "fs"
 
     const uploadOnCloudinary = async (localFilePath) => {
         try {
+            
             if (!localFilePath) return null
             //upload the file on cloudinary
             const response = await cloudinary.uploader.upload(localFilePath, {
@@ -23,6 +24,7 @@ import fs from "fs"
             return response;
     
         } catch (error) {
+            console.log(error)
             fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failed
             return null;
         }
@@ -31,3 +33,4 @@ import fs from "fs"
     
     
     export {uploadOnCloudinary}
+

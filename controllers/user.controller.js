@@ -47,7 +47,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (existedUser) {
         throw new ApiError(409, "User with same user name or email exists")
     }
-console.log(req)
+
     const avtarLocalPath = req.files?.avtar[0].path;
   
 

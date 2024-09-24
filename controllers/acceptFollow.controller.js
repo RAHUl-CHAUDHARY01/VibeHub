@@ -1,10 +1,13 @@
-export const respondToFollowRequest = async (req, res) => {
+import { User } from "../models/user.model.js"
+
+ const respondToFollowRequest = async (req, res) => {
     try {
         const { requestUserId } = req.body; // The ID of the user who sent the follow request
         const loggedInUserId = req.user.id; // The authenticated user who is accepting/rejecting the request
         const { action } = req.body; // 'accept' or 'reject'
-
+console.log(requestUserId)
         // Find both users
+    
         const requestUser = await User.findById(requestUserId);
         const loggedInUser = await User.findById(loggedInUserId);
 
@@ -51,3 +54,5 @@ export const respondToFollowRequest = async (req, res) => {
         return res.status(500).json({ message: "An error occurred while responding to the follow request." });
     }
 };
+
+export{respondToFollowRequest}

@@ -1,6 +1,8 @@
-export const sendFollowRequest = async (req, res) => {
+import { User } from "../models/user.model.js"
+
+const sendFollowRequest = async (req, res) => {
     try {
-        const { id: targetUserId } = req.params; // The user to be followed
+        const  targetUserId  = req.params.id; // The user to be followed
         const loggedInUserId = req.user.id; // The authenticated user who is sending the follow request
 
         if (targetUserId === loggedInUserId) {
@@ -44,3 +46,5 @@ export const sendFollowRequest = async (req, res) => {
 // git branch -M main
 // git remote add origin https://github.com/RAHUl-CHAUDHARY01/VibeHub.git
 // git push -u origin main
+
+export {sendFollowRequest}
